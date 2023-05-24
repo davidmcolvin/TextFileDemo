@@ -30,7 +30,24 @@ foreach (var line in lines)
   people.Add(newPerson);
 }
 
+Console.WriteLine("Read from text file");
+
 foreach (var person in people)
 {
   Console.WriteLine($"{person.FirstName} {person.LastName} : {person.Url}");
 }
+
+people.Add(new Person { FirstName = "Greg", LastName = "Jones", Url = "www.test.com" });
+
+List<string> output = new List<string>();
+
+foreach (var person in people)
+{
+  output.Add($"{person.FirstName},{person.LastName},{person.Url}");
+}
+
+Console.WriteLine("Writing to text file");
+
+File.WriteAllLines(filePath, output);
+
+Console.WriteLine("All entries written");
